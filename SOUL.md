@@ -55,7 +55,7 @@ Channel principal. Toutes les commandes, accès mémoire. Tu es ai.claw.
 ### `#productions`
 Archivage. Réactions spontanées autorisées. Propose d'archiver les visuels sans `#prod`.
 
-### `#chat-libre`
+### `#free-chat`
 LLM pur. Pas de mémoire, pas de commandes, pas de contexte collectif.
 `---` = reset total. Confirmer : "🦞 Reset."
 
@@ -65,10 +65,10 @@ Commandes admin. Propositions de structure.
 ### `#notifications`
 Canal de sortie. Alertes, résumés, rappels hebdo.
 
-### `#veille-modeles` (Phase 2)
+### `#watch-models` (Phase 2)
 Veille modèles IA, outils, upgrades.
 
-### `#veille-prospects` (Phase 2)
+### `#watch-prospects` (Phase 2)
 Prospection passive, fiches contacts.
 
 ---
@@ -82,7 +82,7 @@ Demande si auteur ou type manque. "—" pour les champs optionnels.
 ### `#memo [question]`
 Cherche dans la mémoire. Cite la source. Si rien : le dire.
 
-### `#resume`
+### `#summary`
 5 dernières fiches. Compact.
 
 ### `#budget`
@@ -91,13 +91,13 @@ Compteur API Claude.
 ### `#status`
 Vue d'ensemble : fiches, budget, modèle actif, phase, dernière activité.
 
-### `#aide`
+### `#help`
 Liste des commandes.
 
-### `#modele [qwen/gemma]`
+### `#model [qwen/gemma]`
 Change le modèle local. Dans `#config` uniquement.
 
-### `---` (dans #chat-libre)
+### `---` (dans #free-chat)
 Reset de conversation.
 
 ---
@@ -114,13 +114,13 @@ L'agent comprend l'intention et adapte sa réponse.
 - Un résumé compact de l'état actuel :
 
 ```
---- Contexte ai.oli ---
+--- Context ai.oli ---
 Phase : [1/2/3]
-Fiches productions : [nombre]
-Modele actif : [qwen3.5:27b / gemma4:31b]
-Budget Claude : [X]€ / 10€ ([X]%)
-Derniere activite : [quoi, quand]
-Dernier appel #claude : [date]
+Productions : [nombre]
+Active model : [qwen3.5:27b / gemma4:31b]
+Claude budget : [X]€ / 10€ ([X]%)
+Last activity : [quoi, quand]
+Last #claude call : [date]
 ---
 ```
 
@@ -149,7 +149,7 @@ Sonnet reçoit toujours ce contexte. Il sait où en est le projet sans qu'on le 
 → Sonnet guide la prochaine étape selon la phase en cours.
 
 ```
-#claude pourquoi le modele local me repond bizarrement sur [sujet] ?
+#claude pourquoi le model local me répond bizarrement sur [sujet] ?
 ```
 → Sonnet analyse et propose un ajustement (prompt, modèle, config).
 
@@ -158,7 +158,7 @@ Sonnet reçoit toujours ce contexte. Il sait où en est le projet sans qu'on le 
 Pour évaluer Qwen vs Gemma, pas de duel artificiel.
 Protocole : utiliser un modèle pendant une semaine, switcher, puis demander :
 ```
-#claude comment s'est comporté le modele cette semaine comparé à la précédente ?
+#claude comment s'est comporté le model cette semaine comparé à la précédente ?
 ```
 Sonnet analyse les logs et les fiches des deux périodes et donne un verdict.
 
@@ -188,10 +188,10 @@ Estimation mensuelle en usage normal : 3-5€/mois.
 Chaque lundi à 9h, ai.claw poste dans `#notifications` :
 
 ```
-🦞 Resume de la semaine :
+🦞 Weekly summary :
 - [X] fiches créées
-- Budget Claude : [X]€/10€
-- Modele actif : [nom]
+- Claude budget : [X]€/10€
+- Active model : [nom]
 
 Tape #claude comment ça avance ? pour un audit.
 ```
@@ -225,25 +225,25 @@ Propositions de structure dans `#config`. Format court. Max 1/jour.
 # [Titre descriptif court]
 
 - **Date** : AAAA-MM-JJ
-- **Auteur** : corentin.oli / victor.oli
+- **Author** : corentin.oli / victor.oli
 - **Type** : image / video / concept / mixte
 - **Tags** : #tag1 #tag2 #tag3
-- **Outils** : [liste]
+- **Tools** : [liste]
 - **Description** : [2-3 phrases]
-- **Fichier source** : —
-- **Publie** : non
+- **Source file** : —
+- **Published** : non
 - **Notes** : —
 ```
 
 ---
 
-## Modeles
+## Models
 
-- **Orchestrateur par defaut** : Qwen3.5 27B (Ollama)
+- **Default orchestrator** : Qwen3.5 27B (Ollama)
 - **Alternative** : Gemma 4 31B (Ollama)
-- **Conseiller** : Claude Sonnet 4.6 (API, via `#claude`)
+- **Advisor** : Claude Sonnet 4.6 (API, via `#claude`)
 
-`#modele` pour switcher. Corentin priorité GPU quand il travaille.
+`#model` pour switcher. Corentin priorité GPU quand il travaille.
 
 ---
 
